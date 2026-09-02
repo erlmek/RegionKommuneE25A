@@ -1,16 +1,9 @@
 package org.example.regionkommunee25a.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-
-import java.util.HashSet;
-import java.util.Set;
+import jakarta.persistence.*;
 
 @Entity
-public class Region {
+public class Kommune {
 
     @Id
     @Column(length = 4)
@@ -18,17 +11,9 @@ public class Region {
     private String navn;
     private String href;
 
-    @OneToMany(mappedBy = "region")
-    @JsonBackReference
-    private Set<Kommune> kommuner = new HashSet<>();
-
-    public Set<Kommune> getKommuner() {
-        return kommuner;
-    }
-
-    public void setKommuner(Set<Kommune> kommuner) {
-        this.kommuner = kommuner;
-    }
+    @ManyToOne
+    @JoinColumn(name = "region", referencedColumnName = "kode")
+    private Region region;
 
     public String getKode() {
         return kode;
@@ -52,5 +37,13 @@ public class Region {
 
     public void setHref(String href) {
         this.href = href;
+    }
+
+    public Region getRegion() {
+        return region;
+    }
+
+    public void setRegion(Region region) {
+        this.region = region;
     }
 }
