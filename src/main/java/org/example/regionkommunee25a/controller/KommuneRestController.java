@@ -19,13 +19,13 @@ public class KommuneRestController {
     KommuneRepository kommuneRepository;
 
     @GetMapping
-    List<Kommune> getRegioner() {
+    List<Kommune> getKommuner() {
         return kommuneRepository.findAll();
     }
 
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public Kommune postRegion(@RequestBody Kommune kommune) {
+    public Kommune postKommune(@RequestBody Kommune kommune) {
         System.out.println(kommune);
         return kommuneRepository.save(kommune);
     }
