@@ -4,6 +4,7 @@ import org.example.regionkommunee25a.model.Kommune;
 import org.example.regionkommunee25a.model.Region;
 import org.example.regionkommunee25a.repositories.KommuneRepository;
 import org.example.regionkommunee25a.repositories.RegionRepository;
+import org.example.regionkommunee25a.service.ApiServiceGetKommuner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
