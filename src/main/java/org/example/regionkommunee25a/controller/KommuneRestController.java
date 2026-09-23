@@ -6,6 +6,7 @@ import org.example.regionkommunee25a.repositories.KommuneRepository;
 import org.example.regionkommunee25a.repositories.RegionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,5 +31,13 @@ public class KommuneRestController {
         return kommuneRepository.save(kommune);
     }
 
+    @DeleteMapping("/{kode}")
+    public ResponseEntity<String> deleteKommune(@PathVariable String kode) {
+        if (!kommuneRepository.existsById(kode)) {
+            return ResponseEntity.notFound().build();
+        }
+        kommuneRepository.deleteById(kode);
+        return ResponseEntity.ok("Kommune slettet: " + kode);
+    }
 
 }
