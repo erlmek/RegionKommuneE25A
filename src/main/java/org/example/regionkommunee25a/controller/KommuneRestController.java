@@ -27,6 +27,9 @@ public class KommuneRestController {
     @Autowired
     KommuneRepository kommuneRepository;
 
+    @Autowired
+    ApiServiceGetKommuner apiServiceGetKommuner;
+
     @GetMapping
     List<Kommune> getKommuner() {
         return kommuneRepository.findAll();
@@ -119,6 +122,12 @@ public class KommuneRestController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 
         return new ResponseEntity<>(kommuner, HttpStatus.OK);
+    }
+
+    @GetMapping("/kommunestart/{letter}")
+    public ResponseEntity<List<Kommune>> getKommuneStartsWith(@PathVariable String letter) {
+        List<Kommune> lst = apiServiceGetKommuner.getKommunerStartsWith(letter.charAt(0));
+        return ResponseEntity.ok(lst);
     }
 
 
