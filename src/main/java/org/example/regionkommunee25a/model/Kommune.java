@@ -13,7 +13,7 @@ public class Kommune {
     private String hrefPhoto;
 
     @ManyToOne
-    @JoinColumn(name = "region", referencedColumnName = "kode")
+    @JoinColumn(name = "regionfk", referencedColumnName = "kode")
     private Region region;
 
     public String getKode() {

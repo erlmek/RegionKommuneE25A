@@ -39,4 +39,11 @@ public class ApiServiceGetKommunerImpl implements ApiServiceGetKommuner{
         saveKommuner(lst);
         return lst;
     }
+
+    @Override
+    public List<Kommune> getKommunerStartsWith(Character letter) {
+        List<Kommune> lstKom = kommuneRepository.findAll();
+        return lstKom.stream().filter(kom -> kom.getNavn().charAt(0) == letter).toList();
+    }
+
 }
